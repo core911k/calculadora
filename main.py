@@ -25,14 +25,8 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 app.mount("/static", StaticFiles(directory=str(BASE_DIR)), name="static")
 
 BANDS = {"3": 52.0, "4": 68.0, "5": 86.0, "6": 112.0, "7": 145.0, "8": 180.0, "9": 225.0, "10": 280.0}
-DEFAULT_USERS = [
-    (
-        os.getenv("APP_USERNAME"),
-        os.getenv("APP_PASSWORD"),
-        os.getenv("APP_USER_NAME", "Usuario"),
-        os.getenv("APP_USER_ROLE", "pricing"),
-    )
-]
+DEFAULT_USERS = [("oscar", "demo123", "Oscar", "pricing"), ("admin", "admin123", "Admin", "admin")]
+
 
 class LoginRequest(BaseModel):
     username: str
